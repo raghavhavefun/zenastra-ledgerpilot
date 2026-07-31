@@ -1,0 +1,20 @@
+import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
+import path from 'node:path';
+
+const exec = promisify(execFile);
+const root = process.cwd();
+const stage = path.join(root, '.mcpb-stage');
+const out = path.join(root, 'dist', 'tally-prime-financial-os.mcpb');
+await rm(stage, { recursive: true, force: true });
+await mkdir(stage, { recursive: true });
+await cp(path.join(root, 'manifest.json'), path.join(stage, 'manifest.json'));
+await cp(path.join(root, 'dist'), path.join(stage, 'dist'), { recursive: true });
+await rm(path.join(stage, 'dist', 'tally-prime-financial-os.mcpb'), { force: true });
+await cp(path.join(root, 'node_modules'), path.join(stage, 'node_modules'), { recursive: true });
+await cp(path.join(root, 'package.json'), path.join(stage, 'package.json'));
+await cp(path.join(root, 'package-lock.json'), path.join(stage, 'package-lock.json'));
+await rm(out, { force: true });
+await exec('zip', ['-qr', out, 'manifest.json', 'dist', 'node_modules', 'package.json', 'package-lock.json'], { cwd: stage });
+console.log(`created ${out}`);

@@ -1,0 +1,27 @@
+TALLY FINANCIAL OS — LICENSE NOTICE
+
+This repository contains upstream code from `dhananjay1405/tally-mcp-server` and Zenastra Industries additions.
+
+1. UPSTREAM CODE
+
+The upstream portions remain available under the ISC License:
+
+Copyright (c) 2025 Dhananjay Gokhale
+
+Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+2. ZENASTRA INDUSTRIES ADDITIONS
+
+Zenastra-authored additions, product branding, documentation, packaging, artwork, and commercial services are proprietary to Zenastra Industries. No permission is granted to copy, modify, distribute, sublicense, resell, or provide those additions as a service except under a written commercial agreement with Zenastra Industries.
+
+Commercial licensing and support:
+contact@zenastraindustries.com
+https://zenastraindustries.com
+
+Users remain responsible for accounting review, statutory compliance, backups, security, and approval of entries posted to TallyPrime.
+
+3. THIRD-PARTY SOFTWARE
+
+Third-party dependencies retain their own licenses. See THIRD_PARTY_NOTICES.md and the respective package license files. This notice does not override any upstream or third-party license.

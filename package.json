@@ -1,0 +1,37 @@
+{
+  "name": "tally-prime-financial-os",
+  "version": "8.0.0",
+  "description": "Company-aware AI finance operations for TallyPrime through Claude",
+  "type": "module",
+  "main": "dist/server.mjs",
+  "scripts": {
+    "build": "tsc",
+    "package:mcpb": "npm run build && node scripts/build-mcpb.mjs",
+    "test": "npm run build && node --test test/tally-write.test.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raghavhavefun/tally-financial-os-mcp.git"
+  },
+  "author": "Zenastra Industries <contact@zenastraindustries.com>",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/raghavhavefun/tally-financial-os-mcp/issues"
+  },
+  "homepage": "https://github.com/raghavhavefun/tally-financial-os-mcp#readme",
+  "dependencies": {
+    "@electric-sql/pglite": "^0.4.5",
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "fast-xml-parser": "^5.8.0",
+    "nunjucks": "^3.2.4"
+  },
+  "devDependencies": {
+    "@types/emscripten": "^1.41.5",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.8.0",
+    "@types/nunjucks": "^3.2.6",
+    "typescript": "^7.0.2"
+  }
+}
