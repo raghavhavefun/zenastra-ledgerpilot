@@ -1,0 +1,6 @@
+node_modules/
+.mcpb-stage/
+.hermes/
+.env
+.DS_Store
+*.log
