@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" font-family="Arial, sans-serif">
+  <rect width="1000" height="620" rx="18" fill="#0B0F19"/>
+  <rect x="24" y="24" width="952" height="572" rx="14" fill="#12182B" stroke="#1F2A44" stroke-width="1.5"/>
+
+  <!-- browser chrome -->
+  <rect x="24" y="24" width="952" height="52" rx="14" fill="#161D33"/>
+  <circle cx="52" cy="50" r="6" fill="#FF5F57"/>
+  <circle cx="74" cy="50" r="6" fill="#FEBC2E"/>
+  <circle cx="96" cy="50" r="6" fill="#28C840"/>
+  <rect x="150" y="36" width="700" height="28" rx="8" fill="#0B0F19"/>
+  <text x="170" y="55" font-size="14" fill="#7C8AA5">github.com/raghavhavefun/zenastra-ledgerpilot/releases/latest</text>
+
+  <!-- page header -->
+  <text x="60" y="128" font-size="26" font-weight="700" fill="#EAF2FF">Zenastra LedgerPilot &#8212; v9.0.0</text>
+  <text x="60" y="158" font-size="15" fill="#8CA0C4">238 TallyPrime tools &#8226; company-aware writes &#8226; audit log</text>
+
+  <!-- release asset card -->
+  <rect x="60" y="190" width="880" height="110" rx="12" fill="#0F1526" stroke="#233251" stroke-width="1.5"/>
+  <circle cx="104" cy="245" r="24" fill="#1261A0"/>
+  <text x="94" y="253" font-size="20" fill="#EAF2FF">&#128190;</text>
+  <text x="150" y="235" font-size="17" font-weight="700" fill="#EAF2FF">tally-prime-financial-os.mcpb</text>
+  <text x="150" y="260" font-size="13" fill="#7C8AA5">24.6 MB &#8226; one-click Claude Desktop installer</text>
+  <rect x="770" y="222" width="130" height="42" rx="9" fill="#087F69"/>
+  <text x="795" y="249" font-size="15" font-weight="700" fill="#EAF2FF">Download</text>
+
+  <!-- step marker -->
+  <circle cx="60" cy="80" r="22" fill="#1261A0"/>
+  <text x="52" y="87" font-size="20" font-weight="700" fill="#EAF2FF">1</text>
+  <text x="92" y="87" font-size="18" font-weight="700" fill="#42D392">Download the .mcpb from GitHub Releases</text>
+
+  <text x="60" y="345" font-size="14" fill="#8CA0C4">Click the asset above on the latest release page. No build tools, no npm install, no manual config &#8212; just the file.</text>
+</svg>

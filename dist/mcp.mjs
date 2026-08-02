@@ -6,7 +6,29 @@ import { cacheTable, executeSQL } from './database.mjs';
 import { lstCollectionFields, lstOptionCountryState } from './definition.mjs';
 import { utility } from './utility.mjs';
 import { approveDraft, auditEntries, companyProfile, createDraft, discardDraft, listDrafts, postDraft, previewDraft, voucherInputDescription } from './write.mjs';
+// --- Ported read/report/master/voucher tool layer (from anshveerturna/tally-mcp) ---
+import { TallyClient } from './tally-ported/client.mjs';
+import { TallyState } from './tally-ported/state.mjs';
+import { registerMasterTools } from './tools-ported/masters.mjs';
+import { registerVoucherTools } from './tools-ported/vouchers.mjs';
+import { registerOrderTools } from './tools-ported/orders.mjs';
+import { registerFinancialReportTools } from './tools-ported/reports-financial.mjs';
+import { registerInventoryReportTools } from './tools-ported/reports-inventory.mjs';
+import { registerOutstandingReportTools } from './tools-ported/reports-outstanding.mjs';
+import { registerGstTools } from './tools-ported/gst.mjs';
+import { registerTdsTcsTools } from './tools-ported/tds-tcs.mjs';
+import { registerPayrollTools } from './tools-ported/payroll.mjs';
+import { registerManufacturingTools } from './tools-ported/manufacturing.mjs';
+import { registerBankingTools } from './tools-ported/banking.mjs';
+import { registerBudgetTools } from './tools-ported/budgets.mjs';
+import { registerSecurityTools } from './tools-ported/security.mjs';
+import { registerCompanyTools } from './tools-ported/company.mjs';
+import { registerBulkTools } from './tools-ported/bulk.mjs';
+import { registerTdlQueryTools } from './tools-ported/tdl-query.mjs';
 dotenv.config({ override: true, quiet: true });
+// Reuses the same TALLY_PORT env var convention as src/tally.mts (default 9000, localhost host).
+const portedTallyClient = new TallyClient('localhost', parseInt(process.env.TALLY_PORT || '9000'));
+const portedTallyState = new TallyState(portedTallyClient);
 const lstCollections = lstCollectionFields.map((item) => item.collection);
 export async function registerMcpServer() {
     const mcpServer = new McpServer({
@@ -833,6 +855,25 @@ export async function registerMcpServer() {
             };
         }
     });
+    // --- Register ported read/report/master/voucher tool layer (additive, does not touch existing tools) ---
+    let portedToolCount = 0;
+    portedToolCount += registerMasterTools(mcpServer, portedTallyClient, portedTallyState);
+    portedToolCount += registerVoucherTools(mcpServer, portedTallyClient, portedTallyState);
+    portedToolCount += registerOrderTools(mcpServer, portedTallyClient, portedTallyState);
+    portedToolCount += registerFinancialReportTools(mcpServer, portedTallyClient, portedTallyState);
+    portedToolCount += registerInventoryReportTools(mcpServer, portedTallyClient, portedTallyState);
+    portedToolCount += registerOutstandingReportTools(mcpServer, portedTallyClient, portedTallyState);
+    portedToolCount += registerGstTools(mcpServer, portedTallyClient, portedTallyState);
+    portedToolCount += registerTdsTcsTools(mcpServer, portedTallyClient, portedTallyState);
+    portedToolCount += registerPayrollTools(mcpServer, portedTallyClient, portedTallyState);
+    portedToolCount += registerManufacturingTools(mcpServer, portedTallyClient, portedTallyState);
+    portedToolCount += registerBankingTools(mcpServer, portedTallyClient, portedTallyState);
+    portedToolCount += registerBudgetTools(mcpServer, portedTallyClient, portedTallyState);
+    portedToolCount += registerSecurityTools(mcpServer, portedTallyClient, portedTallyState);
+    portedToolCount += registerCompanyTools(mcpServer, portedTallyClient, portedTallyState);
+    portedToolCount += registerBulkTools(mcpServer, portedTallyClient, portedTallyState);
+    portedToolCount += registerTdlQueryTools(mcpServer, portedTallyClient, portedTallyState);
+    console.error(`Registered ${portedToolCount} ported tools across 16 modules`);
     return mcpServer;
 }
 //# sourceMappingURL=mcp.mjs.map

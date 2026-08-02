@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" font-family="Arial, sans-serif">
+  <rect width="1000" height="620" rx="18" fill="#0B0F19"/>
+  <rect x="24" y="24" width="952" height="572" rx="14" fill="#12182B" stroke="#1F2A44" stroke-width="1.5"/>
+
+  <rect x="24" y="24" width="952" height="52" rx="14" fill="#161D33"/>
+  <circle cx="52" cy="50" r="6" fill="#FF5F57"/>
+  <circle cx="74" cy="50" r="6" fill="#FEBC2E"/>
+  <circle cx="96" cy="50" r="6" fill="#28C840"/>
+  <text x="460" y="55" font-size="14" fill="#7C8AA5">Claude &#8212; New chat</text>
+
+  <circle cx="60" cy="110" r="22" fill="#1261A0"/>
+  <text x="52" y="117" font-size="20" font-weight="700" fill="#EAF2FF">4</text>
+  <text x="92" y="117" font-size="18" font-weight="700" fill="#42D392">Start TallyPrime, then ask Claude</text>
+
+  <rect x="60" y="150" width="420" height="150" rx="12" fill="#0F1526" stroke="#233251" stroke-width="1.5"/>
+  <text x="86" y="182" font-size="15" font-weight="700" fill="#EAF2FF">TallyPrime</text>
+  <text x="86" y="206" font-size="13" fill="#7C8AA5">F1 &#8594; Settings &#8594; Connectivity</text>
+  <text x="86" y="228" font-size="13" fill="#7C8AA5">Set as Server &#8226; XML port 9000</text>
+  <circle cx="470" cy="184" r="8" fill="#28C840"/>
+  <text x="410" y="188" font-size="12" fill="#42D392">Connected</text>
+
+  <rect x="510" y="150" width="430" height="150" rx="12" fill="#0F1526" stroke="#233251" stroke-width="1.5"/>
+  <text x="534" y="182" font-size="15" font-weight="700" fill="#EAF2FF">238 tools available</text>
+  <text x="534" y="206" font-size="13" fill="#7C8AA5">Masters &#8226; Vouchers &#8226; GST &#8226; Payroll</text>
+  <text x="534" y="228" font-size="13" fill="#7C8AA5">Banking &#8226; Budgets &#8226; TDS/TCS &#8226; more</text>
+
+  <rect x="60" y="326" width="880" height="220" rx="14" fill="#161D33" stroke="#2C3B5C" stroke-width="1.5"/>
+  <rect x="86" y="350" width="820" height="46" rx="10" fill="#0B0F19"/>
+  <text x="104" y="379" font-size="14" fill="#EAF2FF">"Show me GST liability for this month and any overdue receivables."</text>
+
+  <rect x="86" y="412" width="820" height="46" rx="10" fill="#0B0F19"/>
+  <text x="104" y="441" font-size="14" fill="#EAF2FF">"Draft a payment voucher for this vendor and let me approve it before posting."</text>
+
+  <text x="86" y="500" font-size="13" fill="#8CA0C4">Every write goes through: draft &#8594; preview &#8594; your approval &#8594; post &#8594; audit log.</text>
+
+  <text x="60" y="580" font-size="14" fill="#8CA0C4">That's it &#8212; no code, no scripts, one file, one click.</text>
+</svg>

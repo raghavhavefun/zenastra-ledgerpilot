@@ -2,8 +2,8 @@
   "manifest_version": "0.3",
   "name": "tally-prime-financial-os",
   "display_name": "Tally Prime Financial OS",
-  "version": "8.0.0",
-  "description": "Company-aware AI finance operations for TallyPrime: read, analyse, draft, approve and post through Claude.",
+  "version": "9.0.0",
+  "description": "Company-aware AI finance operations for TallyPrime: read, analyse, draft, approve and post through Claude. Includes 209 additional ported read/report/master/voucher tools across 16 modules: masters, vouchers, orders, financial/inventory/outstanding reports, GST, TDS/TCS, payroll, manufacturing, banking, budgets, security, company administration, bulk operations, and the TDL query engine.",
   "author": {
     "name": "Zenastra Industries",
     "email": "contact@zenastraindustries.com",
@@ -139,6 +139,1051 @@
     {
       "name": "set-period",
       "description": "sets the active reporting period in Tally Prime by specifying a from date and to date. This changes the global period context used by Tally for subsequent report queries"
+    },
+    {
+      "name": "tally_create_ledger",
+      "description": "Create a new ledger (account) in TallyPrime. Supports GST registration, address, contact, credit terms.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_alter_ledger",
+      "description": "Modify an existing ledger \u2014 rename, change group, update GST, address, contact, credit terms.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_delete_ledger",
+      "description": "Delete a ledger from TallyPrime. Only works if ledger has no transactions.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_get_ledger",
+      "description": "Get complete details of a single ledger \u2014 balance, GST, address, bills, contact info.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_list_ledgers",
+      "description": "List all ledgers, optionally filtered by parent group. Returns name, parent, closing balance.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_create_group",
+      "description": "Create a new account group under a parent group in Tally.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_alter_group",
+      "description": "Modify an existing group \u2014 rename or change parent.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_delete_group",
+      "description": "Delete an account group. Must have no sub-groups or ledgers.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_list_groups",
+      "description": "List all account groups in the company.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_create_stock_item",
+      "description": "Create a new stock/inventory item with unit, GST, HSN, opening stock, MRP, batch & expiry settings.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_alter_stock_item",
+      "description": "Modify an existing stock item \u2014 rename, change GST/HSN, unit, MRP.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_delete_stock_item",
+      "description": "Delete a stock item. Must have no transactions.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_list_stock_items",
+      "description": "List all stock items with GST, HSN, MRP, closing balance details.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_create_stock_group",
+      "description": "Create a new stock group to organize inventory items.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_create_stock_category",
+      "description": "Create a new stock category for inventory classification.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_create_unit",
+      "description": "Create a simple unit of measure \u2014 Nos, Kg, Ltrs, Pcs, etc.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_create_compound_unit",
+      "description": "Create a compound unit \u2014 e.g. Box of 12 = 12 Nos.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_list_units",
+      "description": "List all units of measure configured in the company.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_create_price_level",
+      "description": "Create a price level for multi-price-list management.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_set_price_list",
+      "description": "Set a price for a stock item under a specific price level.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_create_godown",
+      "description": "Create a new godown (warehouse/storage location).",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_list_godowns",
+      "description": "List all godowns/warehouses configured in the company.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_create_cost_centre",
+      "description": "Create a new cost centre for expense tracking and allocation.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_create_cost_category",
+      "description": "Create a cost category for grouping cost centres.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_list_cost_centres",
+      "description": "List all cost centres in the company.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_create_voucher_type",
+      "description": "Create a custom voucher type based on a standard type (Sales, Purchase, Receipt, Payment, Journal, etc.).",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_list_voucher_types",
+      "description": "List all voucher types (standard + custom) in the company.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_create_currency",
+      "description": "Create a new currency for multi-currency accounting.",
+      "category": "Masters"
+    },
+    {
+      "name": "tally_create_sales_invoice",
+      "description": "Create a sales invoice. Handles party ledger, sales ledger, GST, inventory items, bill refs, cost centres. Follow Tally amount sign conventions: Party Dr (negative amount, ISDEEMEDPOSITIVE=Yes), Sales Cr (positive amo...",
+      "category": "Vouchers"
+    },
+    {
+      "name": "tally_create_purchase_invoice",
+      "description": "Create a purchase invoice. Party Cr (negative amount, ISDEEMEDPOSITIVE=No), Purchase Dr (positive amount, ISDEEMEDPOSITIVE=Yes).",
+      "category": "Vouchers"
+    },
+    {
+      "name": "tally_create_receipt",
+      "description": "Create a receipt voucher (money received). Cash/Bank Dr, Party Cr.",
+      "category": "Vouchers"
+    },
+    {
+      "name": "tally_create_payment",
+      "description": "Create a payment voucher (money paid out). Party Dr, Cash/Bank Cr.",
+      "category": "Vouchers"
+    },
+    {
+      "name": "tally_create_journal",
+      "description": "Create a journal voucher with multiple debit/credit entries. Entries must balance.",
+      "category": "Vouchers"
+    },
+    {
+      "name": "tally_create_contra",
+      "description": "Create a contra voucher \u2014 transfer between cash and bank accounts.",
+      "category": "Vouchers"
+    },
+    {
+      "name": "tally_create_credit_note",
+      "description": "Create a credit note (sales return). Reverses a sales invoice.",
+      "category": "Vouchers"
+    },
+    {
+      "name": "tally_create_debit_note",
+      "description": "Create a debit note (purchase return). Reverses a purchase invoice.",
+      "category": "Vouchers"
+    },
+    {
+      "name": "tally_create_stock_journal",
+      "description": "Create a stock journal for inter-godown transfer or stock adjustment.",
+      "category": "Vouchers"
+    },
+    {
+      "name": "tally_create_physical_stock",
+      "description": "Create a physical stock voucher for stock verification/adjustment.",
+      "category": "Vouchers"
+    },
+    {
+      "name": "tally_create_reversing_journal",
+      "description": "Create a reversing journal that auto-reverses on a specified date.",
+      "category": "Vouchers"
+    },
+    {
+      "name": "tally_create_memorandum_voucher",
+      "description": "Create a memorandum/optional voucher that does not affect books.",
+      "category": "Vouchers"
+    },
+    {
+      "name": "tally_alter_voucher",
+      "description": "Modify an existing voucher \u2014 update narration and other details.",
+      "category": "Vouchers"
+    },
+    {
+      "name": "tally_cancel_voucher",
+      "description": "Cancel a voucher (marks it cancelled but keeps it in the system).",
+      "category": "Vouchers"
+    },
+    {
+      "name": "tally_delete_voucher",
+      "description": "Permanently delete a voucher from TallyPrime.",
+      "category": "Vouchers"
+    },
+    {
+      "name": "tally_list_vouchers",
+      "description": "List vouchers filtered by date range, type, and/or party ledger.",
+      "category": "Vouchers"
+    },
+    {
+      "name": "tally_create_sales_order",
+      "description": "Create a sales order with line items. Tracked until fulfilled via delivery/invoice.",
+      "category": "Orders"
+    },
+    {
+      "name": "tally_create_purchase_order",
+      "description": "Create a purchase order with line items.",
+      "category": "Orders"
+    },
+    {
+      "name": "tally_create_delivery_note",
+      "description": "Create a delivery note (goods dispatched against a sales order).",
+      "category": "Orders"
+    },
+    {
+      "name": "tally_create_receipt_note",
+      "description": "Create a receipt note (goods received against a purchase order / GRN).",
+      "category": "Orders"
+    },
+    {
+      "name": "tally_create_rejection_out",
+      "description": "Create a rejection out voucher (return goods to supplier).",
+      "category": "Orders"
+    },
+    {
+      "name": "tally_create_rejection_in",
+      "description": "Create a rejection in voucher (customer returns goods).",
+      "category": "Orders"
+    },
+    {
+      "name": "tally_list_sales_orders",
+      "description": "List sales orders within a date range, optionally filtered by party and status.",
+      "category": "Orders"
+    },
+    {
+      "name": "tally_list_purchase_orders",
+      "description": "List purchase orders within a date range.",
+      "category": "Orders"
+    },
+    {
+      "name": "tally_get_order_outstanding",
+      "description": "Get outstanding (unfulfilled) orders \u2014 sales or purchase.",
+      "category": "Orders"
+    },
+    {
+      "name": "tally_get_sales_order_book",
+      "description": "Get the sales order book showing all orders and their fulfillment status.",
+      "category": "Orders"
+    },
+    {
+      "name": "tally_get_trial_balance",
+      "description": "Fetch the trial balance for a date range. Returns all ledger/group balances with debit/credit totals.",
+      "category": "Financial Reports"
+    },
+    {
+      "name": "tally_get_profit_and_loss",
+      "description": "Fetch the Profit & Loss statement for a date range.",
+      "category": "Financial Reports"
+    },
+    {
+      "name": "tally_get_balance_sheet",
+      "description": "Fetch the Balance Sheet as of a given date.",
+      "category": "Financial Reports"
+    },
+    {
+      "name": "tally_get_cash_flow",
+      "description": "Fetch the cash flow statement for a date range.",
+      "category": "Financial Reports"
+    },
+    {
+      "name": "tally_get_funds_flow",
+      "description": "Fetch the funds flow (working capital changes) statement for a date range.",
+      "category": "Financial Reports"
+    },
+    {
+      "name": "tally_get_ledger_vouchers",
+      "description": "Fetch all vouchers posted to a specific ledger within a date range (ledger statement).",
+      "category": "Financial Reports"
+    },
+    {
+      "name": "tally_get_group_summary",
+      "description": "Fetch summary of all ledgers under a specific group with balances.",
+      "category": "Financial Reports"
+    },
+    {
+      "name": "tally_get_daybook",
+      "description": "Fetch the daybook (all vouchers for a single day or date range).",
+      "category": "Financial Reports"
+    },
+    {
+      "name": "tally_get_cash_book",
+      "description": "Fetch the cash book (all cash transactions) for a date range.",
+      "category": "Financial Reports"
+    },
+    {
+      "name": "tally_get_bank_book",
+      "description": "Fetch the bank book (all bank account transactions) for a date range.",
+      "category": "Financial Reports"
+    },
+    {
+      "name": "tally_get_ratio_analysis",
+      "description": "Fetch key financial ratios (current ratio, debt-equity, ROI etc.) from Tally.",
+      "category": "Financial Reports"
+    },
+    {
+      "name": "tally_get_budget_variance",
+      "description": "Get budget vs actual variance for a specified budget and date range.",
+      "category": "Financial Reports"
+    },
+    {
+      "name": "tally_get_cost_centre_report",
+      "description": "Get a cost-centre-wise break-up of income/expenses.",
+      "category": "Financial Reports"
+    },
+    {
+      "name": "tally_get_profit_centre_report",
+      "description": "Get profit-centre-wise profitability statement.",
+      "category": "Financial Reports"
+    },
+    {
+      "name": "tally_get_statistics",
+      "description": "Get company-level statistics: voucher counts by type, master counts, accounts info.",
+      "category": "Financial Reports"
+    },
+    {
+      "name": "tally_get_stock_summary",
+      "description": "Get overall stock summary: all items with closing quantity and value.",
+      "category": "Inventory Reports"
+    },
+    {
+      "name": "tally_get_stock_item_detail",
+      "description": "Get full details of a specific stock item including batches, godowns, opening/closing balances.",
+      "category": "Inventory Reports"
+    },
+    {
+      "name": "tally_get_godown_summary",
+      "description": "Get godown-wise stock summary showing quantity and value per godown.",
+      "category": "Inventory Reports"
+    },
+    {
+      "name": "tally_get_stock_movement",
+      "description": "Get stock movement (inward/outward) for a stock item over a period.",
+      "category": "Inventory Reports"
+    },
+    {
+      "name": "tally_get_batch_report",
+      "description": "Get batch-wise stock report showing quantity per batch for an item.",
+      "category": "Inventory Reports"
+    },
+    {
+      "name": "tally_get_expiry_report",
+      "description": "Get stock items nearing or past expiry date.",
+      "category": "Inventory Reports"
+    },
+    {
+      "name": "tally_get_reorder_report",
+      "description": "Get stock items at or below their reorder level.",
+      "category": "Inventory Reports"
+    },
+    {
+      "name": "tally_get_stock_valuation",
+      "description": "Get stock valuation report \u2014 closing value by different valuation methods.",
+      "category": "Inventory Reports"
+    },
+    {
+      "name": "tally_get_movement_analysis",
+      "description": "Get movement analysis for inventory \u2014 inward/outward quantities & values.",
+      "category": "Inventory Reports"
+    },
+    {
+      "name": "tally_get_category_summary",
+      "description": "Get stock category-wise summary with totals.",
+      "category": "Inventory Reports"
+    },
+    {
+      "name": "tally_get_receivables",
+      "description": "Get total receivables summary from Sundry Debtors with party breakup.",
+      "category": "Outstanding Reports"
+    },
+    {
+      "name": "tally_get_payables",
+      "description": "Get total payables summary from Sundry Creditors with party breakup.",
+      "category": "Outstanding Reports"
+    },
+    {
+      "name": "tally_get_bills_outstanding",
+      "description": "Get bill-wise outstanding for a specific party ledger.",
+      "category": "Outstanding Reports"
+    },
+    {
+      "name": "tally_get_overdue_receivables",
+      "description": "Get overdue receivables \u2014 bills past due date from Sundry Debtors.",
+      "category": "Outstanding Reports"
+    },
+    {
+      "name": "tally_get_overdue_payables",
+      "description": "Get overdue payables \u2014 bills past due date from Sundry Creditors.",
+      "category": "Outstanding Reports"
+    },
+    {
+      "name": "tally_get_party_outstanding",
+      "description": "Get consolidated outstanding for a specific party (debtor or creditor).",
+      "category": "Outstanding Reports"
+    },
+    {
+      "name": "tally_get_ageing_analysis",
+      "description": "Get ageing analysis (0-30, 31-60, 61-90, 90+ days) for receivables or payables.",
+      "category": "Outstanding Reports"
+    },
+    {
+      "name": "tally_get_interest_calculation",
+      "description": "Get simple interest calculation on outstanding balances.",
+      "category": "Outstanding Reports"
+    },
+    {
+      "name": "tally_get_gstr1",
+      "description": "Get complete GSTR-1 return data (all outward supplies) for a period.",
+      "category": "GST Compliance"
+    },
+    {
+      "name": "tally_get_gstr1_b2b",
+      "description": "Get GSTR-1 B2B section: invoices to registered dealers.",
+      "category": "GST Compliance"
+    },
+    {
+      "name": "tally_get_gstr1_b2c",
+      "description": "Get GSTR-1 B2C section: sales to unregistered consumers.",
+      "category": "GST Compliance"
+    },
+    {
+      "name": "tally_get_gstr1_cdnr",
+      "description": "Get GSTR-1 CDNR section: credit/debit notes to registered parties.",
+      "category": "GST Compliance"
+    },
+    {
+      "name": "tally_get_gstr2a",
+      "description": "Get GSTR-2A data (auto-populated inward supplies from Tally).",
+      "category": "GST Compliance"
+    },
+    {
+      "name": "tally_get_gstr2b",
+      "description": "Get GSTR-2B data (ITC available as per auto-drafted statement).",
+      "category": "GST Compliance"
+    },
+    {
+      "name": "tally_get_gstr3b",
+      "description": "Get GSTR-3B summary return data for a tax period.",
+      "category": "GST Compliance"
+    },
+    {
+      "name": "tally_get_hsn_summary",
+      "description": "Get HSN/SAC code wise summary of outward and inward supplies.",
+      "category": "GST Compliance"
+    },
+    {
+      "name": "tally_get_gst_tax_liability",
+      "description": "Get GST tax liability: CGST, SGST, IGST, Cess breakdown.",
+      "category": "GST Compliance"
+    },
+    {
+      "name": "tally_get_gst_itc",
+      "description": "Get Input Tax Credit (ITC) details \u2014 eligible, ineligible, reversed.",
+      "category": "GST Compliance"
+    },
+    {
+      "name": "tally_get_gst_reconciliation",
+      "description": "Get GST reconciliation: books vs returns, mismatch identification.",
+      "category": "GST Compliance"
+    },
+    {
+      "name": "tally_generate_einvoice",
+      "description": "Generate e-Invoice JSON for a specific sales voucher (for IRN generation).",
+      "category": "GST Compliance"
+    },
+    {
+      "name": "tally_generate_eway_bill",
+      "description": "Generate e-Way Bill JSON data for a voucher.",
+      "category": "GST Compliance"
+    },
+    {
+      "name": "tally_get_gst_ims",
+      "description": "Get GST Invoice Management System (IMS) data.",
+      "category": "GST Compliance"
+    },
+    {
+      "name": "tally_get_gst_notices",
+      "description": "Get list of GST notices or exceptions flagged by Tally.",
+      "category": "GST Compliance"
+    },
+    {
+      "name": "tally_verify_gstin",
+      "description": "Validate a GSTIN format and look up the party in Tally master data.",
+      "category": "GST Compliance"
+    },
+    {
+      "name": "tally_get_gst_return_status",
+      "description": "Get status of GST return preparation and filing readiness.",
+      "category": "GST Compliance"
+    },
+    {
+      "name": "tally_get_gst_exceptions",
+      "description": "Get GST-related exceptions: mismatches in GSTIN, HSN, tax rates, place of supply etc.",
+      "category": "GST Compliance"
+    },
+    {
+      "name": "tally_get_tds_computation",
+      "description": "Get TDS computation report \u2014 deductions made, due amounts, rates applied.",
+      "category": "TDS/TCS Compliance"
+    },
+    {
+      "name": "tally_get_tds_outstanding",
+      "description": "Get TDS outstanding report \u2014 deducted but not yet deposited.",
+      "category": "TDS/TCS Compliance"
+    },
+    {
+      "name": "tally_get_tds_payable_report",
+      "description": "Get TDS payable summary \u2014 section-wise and party-wise breakdown.",
+      "category": "TDS/TCS Compliance"
+    },
+    {
+      "name": "tally_get_tcs_computation",
+      "description": "Get TCS computation report \u2014 collection amounts, rates applied per party.",
+      "category": "TDS/TCS Compliance"
+    },
+    {
+      "name": "tally_get_tcs_outstanding",
+      "description": "Get TCS outstanding \u2014 collected but not deposited.",
+      "category": "TDS/TCS Compliance"
+    },
+    {
+      "name": "tally_get_form_26q",
+      "description": "Get Form 26Q data \u2014 quarterly TDS return for non-salary payments.",
+      "category": "TDS/TCS Compliance"
+    },
+    {
+      "name": "tally_get_form_27q",
+      "description": "Get Form 27Q data \u2014 quarterly TDS return for payments to NRIs.",
+      "category": "TDS/TCS Compliance"
+    },
+    {
+      "name": "tally_get_form_16",
+      "description": "Get Form 16/16A data for certificate generation.",
+      "category": "TDS/TCS Compliance"
+    },
+    {
+      "name": "tally_verify_pan_tds",
+      "description": "Validate PAN format and check if the party exists in Tally with valid PAN.",
+      "category": "TDS/TCS Compliance"
+    },
+    {
+      "name": "tally_get_tds_challan",
+      "description": "Get TDS challan details for a period (for deposit tracking).",
+      "category": "TDS/TCS Compliance"
+    },
+    {
+      "name": "tally_get_lower_deduction_certificates",
+      "description": "List lower/nil deduction certificates recorded in Tally.",
+      "category": "TDS/TCS Compliance"
+    },
+    {
+      "name": "tally_get_tds_nature_summary",
+      "description": "Get summary of TDS by nature of payment (section-wise: 194A, 194C, etc.).",
+      "category": "TDS/TCS Compliance"
+    },
+    {
+      "name": "tally_create_employee",
+      "description": "Create an employee master in TallyPrime.",
+      "category": "Payroll"
+    },
+    {
+      "name": "tally_alter_employee",
+      "description": "Update an existing employee record.",
+      "category": "Payroll"
+    },
+    {
+      "name": "tally_list_employees",
+      "description": "List all employees with basic details.",
+      "category": "Payroll"
+    },
+    {
+      "name": "tally_get_employee_detail",
+      "description": "Get full details of a specific employee.",
+      "category": "Payroll"
+    },
+    {
+      "name": "tally_create_employee_group",
+      "description": "Create an employee group (e.g. Department, Division).",
+      "category": "Payroll"
+    },
+    {
+      "name": "tally_create_pay_head",
+      "description": "Create a pay head (Earnings, Deductions, Employer contributions).",
+      "category": "Payroll"
+    },
+    {
+      "name": "tally_list_pay_heads",
+      "description": "List all pay heads defined in the company.",
+      "category": "Payroll"
+    },
+    {
+      "name": "tally_create_salary_structure",
+      "description": "Set salary structure for an employee (assign pay heads with amounts/percentages).",
+      "category": "Payroll"
+    },
+    {
+      "name": "tally_process_payroll",
+      "description": "Process payroll for a month \u2014 creates payroll vouchers for all/specified employees.",
+      "category": "Payroll"
+    },
+    {
+      "name": "tally_create_attendance_voucher",
+      "description": "Create an attendance voucher for tracking employee attendance/leave.",
+      "category": "Payroll"
+    },
+    {
+      "name": "tally_get_payslip",
+      "description": "Get payslip details for an employee for a given month.",
+      "category": "Payroll"
+    },
+    {
+      "name": "tally_get_payroll_register",
+      "description": "Get payroll register for a period \u2014 all employees, all components.",
+      "category": "Payroll"
+    },
+    {
+      "name": "tally_get_pay_sheet",
+      "description": "Get pay sheet \u2014 compact summary of earnings/deductions for all employees.",
+      "category": "Payroll"
+    },
+    {
+      "name": "tally_get_attendance_report",
+      "description": "Get attendance report showing days present/absent/leave for employees.",
+      "category": "Payroll"
+    },
+    {
+      "name": "tally_get_pf_report",
+      "description": "Get Provident Fund (PF/EPF) computation report.",
+      "category": "Payroll"
+    },
+    {
+      "name": "tally_get_esi_report",
+      "description": "Get ESI (Employee State Insurance) computation report.",
+      "category": "Payroll"
+    },
+    {
+      "name": "tally_get_gratuity_report",
+      "description": "Get gratuity liability report for eligible employees.",
+      "category": "Payroll"
+    },
+    {
+      "name": "tally_get_payroll_statutory_report",
+      "description": "Get consolidated statutory report: PF, ESI, PT, LWF summary.",
+      "category": "Payroll"
+    },
+    {
+      "name": "tally_get_ctc_report",
+      "description": "Get Cost-to-Company (CTC) report for an employee or all employees.",
+      "category": "Payroll"
+    },
+    {
+      "name": "tally_get_employee_ledger",
+      "description": "Get ledger-view of an employee showing all payroll transactions.",
+      "category": "Payroll"
+    },
+    {
+      "name": "tally_create_bom",
+      "description": "Create a Bill of Materials (BOM) for a stock item \u2014 list of components with quantities.",
+      "category": "Manufacturing"
+    },
+    {
+      "name": "tally_alter_bom",
+      "description": "Update an existing BOM for a stock item.",
+      "category": "Manufacturing"
+    },
+    {
+      "name": "tally_get_bom",
+      "description": "Get the BOM components for a stock item.",
+      "category": "Manufacturing"
+    },
+    {
+      "name": "tally_create_manufacturing_journal",
+      "description": "Create a manufacturing journal \u2014 consume raw materials and produce finished goods.",
+      "category": "Manufacturing"
+    },
+    {
+      "name": "tally_get_production_report",
+      "description": "Get production report showing items manufactured in a period.",
+      "category": "Manufacturing"
+    },
+    {
+      "name": "tally_get_consumption_report",
+      "description": "Get raw material consumption report for a period.",
+      "category": "Manufacturing"
+    },
+    {
+      "name": "tally_get_job_costing",
+      "description": "Get job costing report \u2014 cost centre wise allocation of manufacturing costs.",
+      "category": "Manufacturing"
+    },
+    {
+      "name": "tally_get_work_order_status",
+      "description": "Get work order / production order status \u2014 pending vs completed.",
+      "category": "Manufacturing"
+    },
+    {
+      "name": "tally_get_bom_requirements",
+      "description": "Calculate raw material requirements based on BOM for a given production quantity.",
+      "category": "Manufacturing"
+    },
+    {
+      "name": "tally_stock_transfer_between_godowns",
+      "description": "Transfer stock between godowns via a stock journal.",
+      "category": "Manufacturing"
+    },
+    {
+      "name": "tally_get_wastage_report",
+      "description": "Get wastage / scrap report from manufacturing processes.",
+      "category": "Manufacturing"
+    },
+    {
+      "name": "tally_get_yield_analysis",
+      "description": "Get yield analysis \u2014 actual vs expected output from manufacturing.",
+      "category": "Manufacturing"
+    },
+    {
+      "name": "tally_list_boms",
+      "description": "List all stock items that have BOMs defined.",
+      "category": "Manufacturing"
+    },
+    {
+      "name": "tally_get_process_costing",
+      "description": "Get process costing report \u2014 cost accumulation through manufacturing stages.",
+      "category": "Manufacturing"
+    },
+    {
+      "name": "tally_get_bank_reconciliation",
+      "description": "Get bank reconciliation statement for a bank account.",
+      "category": "Banking"
+    },
+    {
+      "name": "tally_reconcile_bank_transaction",
+      "description": "Mark a bank transaction as reconciled with bank date.",
+      "category": "Banking"
+    },
+    {
+      "name": "tally_get_unreconciled_transactions",
+      "description": "Get all unreconciled bank transactions for a bank account.",
+      "category": "Banking"
+    },
+    {
+      "name": "tally_get_cheque_register",
+      "description": "Get cheque register \u2014 all cheques issued and received.",
+      "category": "Banking"
+    },
+    {
+      "name": "tally_get_post_dated_cheques",
+      "description": "Get list of post-dated cheques (PDC) pending clearing.",
+      "category": "Banking"
+    },
+    {
+      "name": "tally_get_deposit_slips",
+      "description": "Get deposit slip summary for bank deposits.",
+      "category": "Banking"
+    },
+    {
+      "name": "tally_get_bank_balance",
+      "description": "Get current balance of a bank account (book balance).",
+      "category": "Banking"
+    },
+    {
+      "name": "tally_list_bank_accounts",
+      "description": "List all bank account ledgers with balances.",
+      "category": "Banking"
+    },
+    {
+      "name": "tally_get_payment_performance",
+      "description": "Get payment performance analysis \u2014 on-time vs delayed payments.",
+      "category": "Banking"
+    },
+    {
+      "name": "tally_get_cash_position",
+      "description": "Get current cash position \u2014 cash in hand + all bank balances.",
+      "category": "Banking"
+    },
+    {
+      "name": "tally_create_budget",
+      "description": "Create a budget with allocations for ledgers/groups by period.",
+      "category": "Budgets & Scenarios"
+    },
+    {
+      "name": "tally_alter_budget",
+      "description": "Update an existing budget allocations.",
+      "category": "Budgets & Scenarios"
+    },
+    {
+      "name": "tally_delete_budget",
+      "description": "Delete a budget.",
+      "category": "Budgets & Scenarios"
+    },
+    {
+      "name": "tally_list_budgets",
+      "description": "List all budgets defined in the company.",
+      "category": "Budgets & Scenarios"
+    },
+    {
+      "name": "tally_get_budget_detail",
+      "description": "Get details of a specific budget including all allocations.",
+      "category": "Budgets & Scenarios"
+    },
+    {
+      "name": "tally_get_budget_vs_actual",
+      "description": "Get budget vs actual comparison report.",
+      "category": "Budgets & Scenarios"
+    },
+    {
+      "name": "tally_get_budget_utilization",
+      "description": "Get budget utilization percentage \u2014 how much of the budget has been consumed.",
+      "category": "Budgets & Scenarios"
+    },
+    {
+      "name": "tally_get_scenario_report",
+      "description": "Get scenario-based report (actual, budget, what-if) for financial planning.",
+      "category": "Budgets & Scenarios"
+    },
+    {
+      "name": "tally_create_user",
+      "description": "Create a Tally user with specific security level / access rights.",
+      "category": "Security & Users"
+    },
+    {
+      "name": "tally_alter_user",
+      "description": "Update an existing Tally user (change security level, password, etc.).",
+      "category": "Security & Users"
+    },
+    {
+      "name": "tally_delete_user",
+      "description": "Delete a Tally user.",
+      "category": "Security & Users"
+    },
+    {
+      "name": "tally_list_users",
+      "description": "List all Tally users and their security levels.",
+      "category": "Security & Users"
+    },
+    {
+      "name": "tally_get_audit_log",
+      "description": "Get audit trail / activity log \u2014 who changed what and when.",
+      "category": "Security & Users"
+    },
+    {
+      "name": "tally_get_altered_vouchers_log",
+      "description": "Get list of vouchers that were altered/modified (for audit purposes).",
+      "category": "Security & Users"
+    },
+    {
+      "name": "tally_get_deleted_vouchers_log",
+      "description": "Get list of deleted/cancelled vouchers (for audit trail).",
+      "category": "Security & Users"
+    },
+    {
+      "name": "tally_get_exception_reports",
+      "description": "Get data exception reports \u2014 negative stock, zero-value vouchers, unusual entries.",
+      "category": "Security & Users"
+    },
+    {
+      "name": "tally_list_companies",
+      "description": "List all companies loaded in TallyPrime.",
+      "category": "Company Administration"
+    },
+    {
+      "name": "tally_get_company_info",
+      "description": "Get comprehensive info about a company \u2014 name, address, FY, GST, features enabled.",
+      "category": "Company Administration"
+    },
+    {
+      "name": "tally_set_active_company",
+      "description": "Set the active company for all subsequent operations.",
+      "category": "Company Administration"
+    },
+    {
+      "name": "tally_alter_company",
+      "description": "Update company configuration \u2014 address, statutory info, features.",
+      "category": "Company Administration"
+    },
+    {
+      "name": "tally_test_connection",
+      "description": "Test if TallyPrime is running and reachable. Returns version and active company info.",
+      "category": "Company Administration"
+    },
+    {
+      "name": "tally_refresh_cache",
+      "description": "Force-refresh the master data cache (ledgers, stock items, groups, etc.).",
+      "category": "Company Administration"
+    },
+    {
+      "name": "tally_get_license_info",
+      "description": "Get TallyPrime license information: edition, serial number, features.",
+      "category": "Company Administration"
+    },
+    {
+      "name": "tally_get_feature_status",
+      "description": "Check which features are enabled in the active company (F11/F12 settings).",
+      "category": "Company Administration"
+    },
+    {
+      "name": "tally_bulk_create_ledgers",
+      "description": "Create multiple ledgers in one shot. Efficient for initial setup.",
+      "category": "Bulk Operations"
+    },
+    {
+      "name": "tally_bulk_create_stock_items",
+      "description": "Create multiple stock items in one batch.",
+      "category": "Bulk Operations"
+    },
+    {
+      "name": "tally_bulk_create_groups",
+      "description": "Create multiple account groups in one batch.",
+      "category": "Bulk Operations"
+    },
+    {
+      "name": "tally_bulk_create_vouchers",
+      "description": "Import multiple vouchers in one batch (same or different types).",
+      "category": "Bulk Operations"
+    },
+    {
+      "name": "tally_bulk_create_cost_centres",
+      "description": "Create multiple cost centres in one batch.",
+      "category": "Bulk Operations"
+    },
+    {
+      "name": "tally_bulk_create_employees",
+      "description": "Create multiple employees in one batch.",
+      "category": "Bulk Operations"
+    },
+    {
+      "name": "tally_bulk_create_godowns",
+      "description": "Create multiple godowns/warehouses in one batch.",
+      "category": "Bulk Operations"
+    },
+    {
+      "name": "tally_bulk_alter_ledgers",
+      "description": "Update multiple ledgers in a single batch (change group, balances, etc.).",
+      "category": "Bulk Operations"
+    },
+    {
+      "name": "tally_bulk_delete_masters",
+      "description": "Delete multiple masters of the same type in one batch.",
+      "category": "Bulk Operations"
+    },
+    {
+      "name": "tally_bulk_create_units",
+      "description": "Create multiple units of measure in one batch.",
+      "category": "Bulk Operations"
+    },
+    {
+      "name": "tally_export_masters_csv_format",
+      "description": "Export master data in a flat, JSON-table format (like CSV) for analysis.",
+      "category": "Bulk Operations"
+    },
+    {
+      "name": "tally_export_vouchers_flat",
+      "description": "Export vouchers in a flat JSON format for analysis or migration.",
+      "category": "Bulk Operations"
+    },
+    {
+      "name": "tally_query_collection",
+      "description": "Run a custom TDL collection query against TallyPrime. This is the most flexible query tool \u2014 specify object type, fields to fetch, and filter conditions.",
+      "category": "TDL Query Engine"
+    },
+    {
+      "name": "tally_execute_tdl_inline",
+      "description": "Execute raw inline TDL code in TallyPrime. POWER TOOL \u2014 for advanced queries not covered by other tools. The TDL snippet is injected inside the XML request.",
+      "category": "TDL Query Engine"
+    },
+    {
+      "name": "tally_evaluate_function",
+      "description": "Evaluate a TDL function in TallyPrime and get the result. Use for computed values, aggregations, conditionals.",
+      "category": "TDL Query Engine"
+    },
+    {
+      "name": "tally_export_object",
+      "description": "Export a complete Tally object by type and name \u2014 returns full XML representation with all fields.",
+      "category": "TDL Query Engine"
+    },
+    {
+      "name": "tally_export_report",
+      "description": "Export any named Tally report as XML. Use when a specific report module tool is not available.",
+      "category": "TDL Query Engine"
+    },
+    {
+      "name": "tally_execute_action",
+      "description": "Execute a TDL action in TallyPrime (e.g. alter company settings, run macros).",
+      "category": "TDL Query Engine"
+    },
+    {
+      "name": "tally_search_masters",
+      "description": "Fuzzy search across all master types: ledgers, stock items, groups, cost centres. Returns matching names.",
+      "category": "TDL Query Engine"
+    },
+    {
+      "name": "tally_get_master_names",
+      "description": "Get a quick list of all names for a given master type. Uses cached data when available.",
+      "category": "TDL Query Engine"
+    },
+    {
+      "name": "tally_import_raw_xml",
+      "description": "Import raw XML into TallyPrime. POWER TOOL \u2014 for advanced use when building custom XML payloads.",
+      "category": "TDL Query Engine"
+    },
+    {
+      "name": "tally_send_raw_xml",
+      "description": "Send any raw XML request to TallyPrime and get the raw response. Ultimate flexibility.",
+      "category": "TDL Query Engine"
+    },
+    {
+      "name": "tally_get_collection_types",
+      "description": "Get a reference of available Tally collection types and common fetch fields for building queries.",
+      "category": "TDL Query Engine"
+    },
+    {
+      "name": "tally_get_tdl_syntax_help",
+      "description": "Get TDL syntax reference for building custom queries and functions. Includes collection syntax, filter patterns, function patterns.",
+      "category": "TDL Query Engine"
     }
   ],
   "tools_generated": false,

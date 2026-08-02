@@ -4,7 +4,7 @@
 
 # Zenastra LedgerPilot — TallyPrime MCP
 
-AI-powered TallyPrime finance operations for Claude Desktop. Read company data, analyse accounts, prepare company-aware voucher drafts, approve them, and write approved entries back to TallyPrime.
+AI-powered TallyPrime finance operations for Claude Desktop. **238 tools** covering full read/report coverage across Masters, Vouchers, Orders, Financial & Inventory Reports, Receivables/Payables, GST, TDS/TCS, Payroll, Manufacturing, Banking, Budgets, Security, Bulk Operations and a custom TDL Query Engine — plus a company-aware, human-approved write workflow for posting real accounting entries.
 
 Built for companies moving from **₹10 crore to ₹100 crore and beyond**.
 
@@ -20,40 +20,46 @@ Built for companies moving from **₹10 crore to ₹100 crore and beyond**.
 
 ## What this Tally MCP does
 
-### Read and analyse TallyPrime
+### Read, analyse and report across every module
 
 Ask Claude:
 
-- “Show customers overdue by more than ₹10 lakh.”
-- “Compare this quarter’s expenses with last quarter.”
-- “Explain the largest changes in profit and loss.”
-- “Show the trial balance and balance sheet for this period.”
-- “Which stock items are slow-moving?”
-- “Find unusual ledger transactions.”
-- “Show the current company’s ledgers, groups, voucher types and stock items.”
+- "Show customers overdue by more than ₹10 lakh, with ageing buckets."
+- "Compare this quarter's expenses with last quarter."
+- "Explain the largest changes in profit and loss."
+- "Show the trial balance and balance sheet for this period."
+- "Which stock items are slow-moving, near expiry, or due for reorder?"
+- "Pull my GSTR-1 B2B data and check for reconciliation mismatches."
+- "Generate the payroll register and PF/ESI statutory reports for this month."
+- "Show unreconciled bank transactions and current cash position."
+- "Find unusual ledger transactions."
+- "Show the current company's ledgers, groups, voucher types and stock items."
 
-Available reporting capabilities include:
+### Full tool coverage (238 tools across 17 modules)
 
-- Company and master lookup
-- Dynamic collection queries
-- SQL analysis of cached reports
-- Chart of accounts
-- Trial balance
-- Profit and loss
-- Balance sheet
-- Stock summary
-- Ledger balance
-- Stock-item balance
-- Receivables and payables outstanding
-- Ledger account statements
-- Stock-item account statements
-- Ledger create/update
-- Master deletion
-- Company and period context
+| Module | Tools | What it covers |
+|---|---|---|
+| Company & Context | 10 | Active company detection, company profile, period context, connection health |
+| Masters | 28 | Ledgers, groups, stock items, units, godowns, cost centres, currencies — create/alter/delete/list |
+| Vouchers | 16 | Sales, purchase, receipt, payment, journal, contra, credit/debit notes |
+| Orders | 10 | Sales/purchase orders, delivery/receipt notes, rejections |
+| Financial Reports | 15 | Trial balance, P&L, balance sheet, cash flow, funds flow, daybook, ratio analysis, budget variance |
+| Inventory Reports | 10 | Stock summary, movement, batch, expiry, reorder alerts, valuation |
+| Outstanding / Receivables | 8 | Receivables, payables, ageing analysis, bill-wise, overdue tracking, interest calculation |
+| GST | 18 | GSTR-1/2A/2B/3B, HSN summary, e-Invoice, e-Way Bill, ITC, reconciliation, GSTIN verification |
+| TDS/TCS | 12 | Computation, statutory forms (26Q/27Q/16), challans, PAN verification |
+| Payroll | 20 | Employees, pay heads, salary structures, payslips, PF/ESI/gratuity, attendance |
+| Manufacturing | 14 | BOM, production, consumption, job costing, yield analysis |
+| Banking | 10 | Bank reconciliation, cheque register, PDCs, cash position |
+| Budgets | 8 | Budget CRUD, variance, utilization, scenario reports |
+| Security | 8 | Users, audit trail, altered/deleted voucher logs, exceptions |
+| Bulk Operations | 12 | Batch create/update/delete for masters & vouchers |
+| TDL Query Engine | 12 | Custom queries, inline TDL, raw XML, search, reference lookups |
+| Company-aware writes | 7 | Draft → preview → approve → post → discard, with audit log (see below) |
 
 ### Company-aware writing
 
-The write workflow uses the company structure available in TallyPrime:
+Every write goes through an explicit approval gate before anything touches your books:
 
 ```text
 Read active company
@@ -64,6 +70,7 @@ Read active company
   → Authorised user approves
   → Post to TallyPrime
   → Verify company context and result
+  → Logged in audit-log
 ```
 
 Write tools:
@@ -80,23 +87,24 @@ Write tools:
 - `ledger-create-update` — creates or updates ledger masters.
 - `delete-master` — deletes supported master records; use with care.
 
+Nothing is posted to TallyPrime without a human explicitly approving the exact entry first. This is the core difference between this connector and simply letting an AI have raw write access to your books.
+
 <p align="center">
   <img src="assets/workflow.svg" alt="Tally voucher workflow" width="100%">
 </p>
 
-## How this can reduce finance cost
+## How this helps a growing company
 
-For a ₹10 crore–₹1,000 crore company, the connector can help identify:
+A finance team using this connector typically replaces several separate, manual workflows with one AI conversation:
 
-- Overdue receivables and cash trapped in customers
-- Duplicate or unusual accounting entries
-- Excess, slow-moving and ageing inventory
-- Reporting delays and repetitive finance work
-- Ledger and classification errors
-- GST data inconsistencies requiring review
-- Expense and margin changes requiring management action
+- **Faster filings** — GST returns, HSN summaries, and TDS/TCS forms are assembled directly from live Tally data instead of manually exported and re-keyed into spreadsheets.
+- **Fewer missed credits and errors** — ITC reconciliation, GST exception tracking, and ledger classification checks surface issues before a return is filed, not after a notice arrives.
+- **Less time on reconciliation** — bank reconciliation, ageing analysis, and unusual-transaction detection run on demand instead of at month-end crunch.
+- **Reduced dependency on external consultants for routine reporting** — trial balance, P&L, balance sheet, budget variance and payroll statutory reports are available instantly, in conversation, instead of requested-and-waited-for.
+- **Controlled automation, not blind automation** — every accounting write is drafted, previewed, and requires explicit human approval before it touches your books, with a full audit trail.
+- **Visibility a small, uncoordinated finance team usually can't keep up with** — company-wide receivables ageing, inventory reorder points, and budget-vs-actual are queryable instantly instead of chased across disconnected reports.
 
-The financial opportunity may range from lakhs to crores depending on transaction volume, leakage, working-capital discipline and existing manual cost. Results should be measured against the company’s own baseline.
+The financial opportunity — cost saved on manual reporting and consultants, revenue protected from leakage, and time reclaimed for higher-value work — depends entirely on a company's own transaction volume, current manual overhead, and existing process discipline. We do not publish a generic savings percentage because the honest answer is: it depends on your books. Connect with us for a diagnostic against your own data.
 
 ## Requirements
 
@@ -113,6 +121,30 @@ TallyPrime must be running and reachable. The required company must be available
 
 <p align="center">
   <img src="assets/claude-installation.svg" alt="Claude Desktop installation steps" width="100%">
+</p>
+
+### Step 1 — Download the installer
+
+<p align="center">
+  <img src="assets/install-step-1-download.svg" alt="Download the .mcpb from GitHub Releases" width="100%">
+</p>
+
+### Step 2 — Open Extensions in Claude Desktop
+
+<p align="center">
+  <img src="assets/install-step-2-open-extensions.svg" alt="Claude Settings, Extensions, Install Extension" width="100%">
+</p>
+
+### Step 3 — Confirm installation
+
+<p align="center">
+  <img src="assets/install-step-3-confirm.svg" alt="Confirm installation and permissions" width="100%">
+</p>
+
+### Step 4 — Start TallyPrime and connect
+
+<p align="center">
+  <img src="assets/install-step-4-connect.svg" alt="Start TallyPrime XML server and ask Claude" width="100%">
 </p>
 
 1. Download the [latest `.mcpb` installer](https://github.com/raghavhavefun/zenastra-ledgerpilot/releases/latest/download/tally-prime-financial-os.mcpb).
@@ -148,7 +180,7 @@ Or download the [source ZIP](https://github.com/raghavhavefun/zenastra-ledgerpil
 
 ### 3. Configure Claude Desktop
 
-Add this to Claude Desktop’s MCP configuration:
+Add this to Claude Desktop's MCP configuration:
 
 ```json
 {
@@ -202,7 +234,7 @@ dist/tally-prime-financial-os.mcpb
 
 ## Local data and security
 
-- Keep TallyPrime’s unauthenticated XML port local.
+- Keep TallyPrime's unauthenticated XML port local.
 - Do not expose port `9000` directly to the public internet.
 - Use a customer-side connector or authenticated outbound tunnel for remote access.
 - Back up the company before enabling write or delete tools.
@@ -232,10 +264,14 @@ This is proprietary commercial software from Zenastra Industries. Upstream and t
 
 This connector accelerates finance operations and analysis. Authorised company users remain responsible for accounting classifications, statutory filings, approvals, backups and final decisions.
 
-## Upstream project
+## Upstream projects
 
 This project extends the public TallyPrime MCP pattern created by Dhananjay Gokhale:
 
 [https://github.com/dhananjay1405/tally-mcp-server](https://github.com/dhananjay1405/tally-mcp-server)
+
+The v9.0.0 read/report/master tool layer (238 tools across 17 modules) additionally incorporates and extends the TallyPrime MCP server architecture published by Anshveer Turna:
+
+[https://github.com/anshveerturna/tally-mcp](https://github.com/anshveerturna/tally-mcp)
 
 Built by **Zenastra Industries** for TallyPrime finance teams that want faster reporting, controlled writing and better operating visibility.

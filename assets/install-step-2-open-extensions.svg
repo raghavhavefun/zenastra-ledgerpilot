@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" font-family="Arial, sans-serif">
+  <rect width="1000" height="620" rx="18" fill="#0B0F19"/>
+  <rect x="24" y="24" width="952" height="572" rx="14" fill="#12182B" stroke="#1F2A44" stroke-width="1.5"/>
+
+  <!-- title bar -->
+  <rect x="24" y="24" width="952" height="52" rx="14" fill="#161D33"/>
+  <circle cx="52" cy="50" r="6" fill="#FF5F57"/>
+  <circle cx="74" cy="50" r="6" fill="#FEBC2E"/>
+  <circle cx="96" cy="50" r="6" fill="#28C840"/>
+  <text x="460" y="55" font-size="14" fill="#7C8AA5">Claude &#8212; Settings</text>
+
+  <!-- sidebar -->
+  <rect x="24" y="76" width="220" height="520" fill="#0F1526"/>
+  <text x="52" y="118" font-size="14" fill="#7C8AA5">General</text>
+  <text x="52" y="150" font-size="14" fill="#7C8AA5">Appearance</text>
+  <text x="52" y="182" font-size="14" font-weight="700" fill="#EAF2FF">Extensions</text>
+  <rect x="24" y="164" width="4" height="34" fill="#42D392"/>
+  <text x="52" y="214" font-size="14" fill="#7C8AA5">Account</text>
+
+  <!-- content -->
+  <circle cx="290" cy="100" r="22" fill="#1261A0"/>
+  <text x="282" y="107" font-size="20" font-weight="700" fill="#EAF2FF">2</text>
+  <text x="322" y="107" font-size="18" font-weight="700" fill="#42D392">Open Extensions, then Install Extension&#8230;</text>
+
+  <rect x="270" y="140" width="670" height="70" rx="10" fill="#0F1526" stroke="#233251" stroke-width="1.5"/>
+  <text x="290" y="172" font-size="15" fill="#EAF2FF">Installed extensions</text>
+  <text x="290" y="192" font-size="13" fill="#7C8AA5">No extensions installed yet</text>
+
+  <rect x="270" y="228" width="240" height="46" rx="9" fill="#087F69"/>
+  <text x="292" y="257" font-size="15" font-weight="700" fill="#EAF2FF">+ Install Extension&#8230;</text>
+
+  <!-- file picker mock -->
+  <rect x="330" y="300" width="480" height="220" rx="12" fill="#161D33" stroke="#2C3B5C" stroke-width="1.5"/>
+  <text x="356" y="332" font-size="15" font-weight="700" fill="#EAF2FF">Select an extension file</text>
+  <rect x="356" y="352" width="428" height="42" rx="8" fill="#0B0F19"/>
+  <text x="372" y="378" font-size="13" fill="#EAF2FF">tally-prime-financial-os.mcpb</text>
+  <rect x="356" y="410" width="428" height="42" rx="8" fill="#0B0F19"/>
+  <text x="372" y="436" font-size="12" fill="#7C8AA5">Downloads</text>
+  <rect x="620" y="470" width="90" height="36" rx="8" fill="#233251"/>
+  <text x="640" y="493" font-size="13" fill="#EAF2FF">Cancel</text>
+  <rect x="720" y="470" width="90" height="36" rx="8" fill="#087F69"/>
+  <text x="742" y="493" font-size="13" font-weight="700" fill="#EAF2FF">Open</text>
+
+  <text x="60" y="580" font-size="14" fill="#8CA0C4">Claude Settings &#8594; Extensions &#8594; Install Extension&#8230; &#8594; select the downloaded .mcpb file.</text>
+</svg>
